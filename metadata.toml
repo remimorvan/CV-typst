@@ -1,8 +1,6 @@
 #:schema https://raw.githubusercontent.com/mintyfrankie/brilliant-CV/main/metadata.toml.schema.json
 
-# Set the output language
-# INFO: value must matches folder suffix; i.e "zh" -> "./modules_zh"
-language = "fr"
+# Output language should be given with option --input= at compilation
 
 [layout]
     # Optional values: skyblue, red, nephritis, concrete, darknight

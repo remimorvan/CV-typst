@@ -1,7 +1,8 @@
 // Imports
 #import "brighter-cv/2.0.4/lib.typ": cv
 #let metadata = toml("./metadata.toml")
-#let importModules(modules, lang: metadata.language) = {
+#let lang = sys.inputs.at("lang", default: "fr")
+#let importModules(modules, lang: lang) = {
   for module in modules {
     include {
       "modules_" + lang + "/" + module + ".typ"

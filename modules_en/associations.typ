@@ -5,7 +5,7 @@
 #let cvEntry = cvEntry.with(metadata: metadata)
 
 
-#cvSection("Expérience Associative & Élective")
+#cvSection("Associative & elective experience")
 
 #cvEntry(
   title: [Membre du conseil scientifique],

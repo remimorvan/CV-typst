@@ -1,5 +1,5 @@
 // Imports
-#import "@preview/brilliant-cv:2.0.4": cvSection, cvSkill, hBar
+#import "../brighter-cv/2.0.4/lib.typ": cvSection, cvSkill, hBar
 #let metadata = toml("../metadata.toml")
 #let cvSection = cvSection.with(metadata: metadata)
 

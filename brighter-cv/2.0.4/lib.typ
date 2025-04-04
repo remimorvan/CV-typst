@@ -15,7 +15,7 @@
   doc,
 ) = {
   // Non Latin Logic
-  let lang = metadata.language
+  let lang = sys.inputs.at("lang", default: "fr")
   let fontList = latinFontList
   let headerFont = latinHeaderFont
   fontList = overwriteFonts(metadata, latinFontList, latinHeaderFont).regularFonts

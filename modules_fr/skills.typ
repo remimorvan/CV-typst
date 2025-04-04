@@ -15,7 +15,7 @@
 
 #cvSkill(
   type: [Langues],
-  info: [Français (maternel) #hBar() Anglais (bilingue : Cambridge Qualification C2)],
+  info: [Français : maternel #hBar() Anglais : bilingue ~ _Cambridge Qualification C2_],
 )
 
 #cvSkill(

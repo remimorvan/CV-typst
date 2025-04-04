@@ -30,12 +30,13 @@
   let personalInfo = metadata.personal.info
   let firstName = metadata.personal.first_name
   let lastName = metadata.personal.last_name
-  let headerQuote = metadata.lang.at(metadata.language).header_quote
+  let lang = sys.inputs.at("lang", default: "fr")
+  let headerQuote = metadata.lang.at(lang).header_quote
   let displayProfilePhoto = metadata.layout.header.display_profile_photo
   // let profilePhoto = metadata.layout.header.profile_photo_path
   let accentColor = setAccentColor(awesomeColors, metadata)
   let nonLatinName = ""
-  let nonLatin = isNonLatin(metadata.language)
+  let nonLatin = isNonLatin(lang)
   if nonLatin {
     nonLatinName = metadata.lang.non_latin.name
   }
@@ -220,7 +221,7 @@
   metadata: metadata,
   awesomeColors: awesomeColors,
 ) = {
-  let lang = metadata.language
+  let lang = sys.inputs.at("lang", default: "fr")
   let nonLatin = isNonLatin(lang)
   let beforeSectionSkip = eval(
     metadata.layout.at("before_section_skip", default: 1pt),
