@@ -1,0 +1,22 @@
+# Ignore macOS system files
+.DS_Store
+
+# Ignore Typst build artifacts
+*.pdf
+*.aux
+*.log
+
+# Ignore temporary files
+*.tmp
+*.bak
+*.swp
+
+# Ignore backup files
+*~
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore cloud storage conflict files
+*.conflict.*
