@@ -1,9 +1,8 @@
-common_dependencies = cv.typ metadata.toml $(shell find brighter-cv -type f)
+common_dependencies = main-cv.typ metadata.toml
 
-all: cv-remi-morvan-fr.pdf cv-remi-morvan-en.pdf
+all: remi-morvan-en.pdf remi-morvan-fr.pdf
 
-cv-remi-morvan-fr.pdf: $(common_dependencies) $(shell find modules_fr -type f) 
-	typst c cv.typ cv-remi-morvan-fr.pdf --input=lang=fr
-
-cv-remi-morvan-en.pdf: $(common_dependencies) $(shell find modules_en -type f)
-	typst c cv.typ cv-remi-morvan-en.pdf --input=lang=en
+remi-morvan-en.pdf: $(common_dependencies) $(shell find en -type f) 
+	typst c main-cv.typ remi-morvan-en.pdf --input=lang=en 
+remi-morvan-fr.pdf: $(common_dependencies) $(shell find fr -type f)
+	typst c main-cv.typ remi-morvan-fr.pdf --input=lang=fr
