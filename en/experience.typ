@@ -6,15 +6,13 @@
   icon: "suitcase",
   title: "Professional Experience",
   content: (
-    entry_main(
-      when: [Sept. 2021 – Aug. 2025],
-      where: [Université de Bordeaux & Enseirb-Matmeca],
-      title: [Ph.D. Researcher],
-    )[
-      - Research projects in *database theory* and *automata theory*. 6 publications and 24 seminars.
-      - *240h of teaching* at Université de Bordeaux and Enseirb-Matmeca, in bachelor and master. Topics: *programming* (C & Javascript), *machine learning, databases* & theoretical computer science.
-      - *Main organizer* and founder of a *three-day workshop* _ATLAS '24_. Member of the organization committee of several conferences.
+    entry_main(when: [Sept. 2021 – Aug. 2025], where: [LaBRI, Université de Bordeaux], title: [Ph.D. Researcher])[
+      - Research projects in *database theory* (graph database query optimization) and *automata theory* (model-checking of infinite structures). 6 publications and 24 seminars.
+      - *Main organiser* and founder of a *three-day workshop* _ATLAS '24_. Member of the organising committee of several conferences.
       - *Supervisor* of two interns.
+    ],
+    entry_main(when: [Sept. 2021 – Aug. 2025], where: [Université de Bordeaux & Enseirb-Matmeca], title: [Teacher])[
+      *240 hours of teaching* in Bachelor's and Master's programmes. Topics: *programming* (C & JavaScript), *machine learning, databases* & theoretical computer science.
     ],
     entry_main(
       when: [Sept. 2020 – June 2021],

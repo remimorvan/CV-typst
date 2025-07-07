@@ -8,12 +8,14 @@
 #let import_sections(lang, sections, spread: true) = {
   for id in range(sections.len()) {
     if (id > 0) {
-      v(2em)
+      v(1.5em)
       if (spread) { v(1fr) }
     }
-    block(include {
-      "./" + lang + "/" + sections.at(id) + ".typ"
-    })
+    block(
+      include {
+        "./" + lang + "/" + sections.at(id) + ".typ"
+      },
+    )
   }
 }
 
@@ -27,7 +29,7 @@
 #let main = [
   #import_sections(
     metadata.language,
-    ("experience", "education", "softwares", "associations"),
+    ("experience", "education", "publications", "softwares", "associations"),
     spread: true,
   )
 ]

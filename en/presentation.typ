@@ -5,7 +5,7 @@
 #section_presentation(
   "Rémi",
   "Morvan",
-  "Database Theorist",
+  "Database Researcher",
   photo: image("../remi.png", width: 90%),
   contact: (
     (type: "envelope", link: "mailto:remi@morvan.xyz", display: "remi@morvan.xyz"),
