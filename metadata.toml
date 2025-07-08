@@ -3,13 +3,16 @@ language = "en"
 [name]
 	align = "left"
 	first_name_size = "2.4em"
-	last_name_size = "3.8em"
+	last_name_size = "3.6em"
+	title_size = "2.1em"
 [colour]
 	side = "#7EACB5"
 	main = "#C96868"
 	tag = "#FFE9B1"
 [font]
 	main = "Bitter"
+	name = "Fira Sans"
+	job_title = "Nanum Pen"
 	title = "Fira Sans"
 	tag = "Fira Code"
 	size = "9pt"

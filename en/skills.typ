@@ -5,34 +5,30 @@
 #section_items(title: "Tech Stack", (
   entry_skill(
     title: [Python],
-    level: 3,
-  ),
-  entry_skill(
-    title: [LaTeX],
-    level: 3,
-  ),
-  entry_skill(
-    title: [SQL],
-    level: 2,
+    icon: "python",
   ),
   entry_skill(
     title: [OCaml],
-    level: 2,
+    icon: "ocaml",
   ),
   entry_skill(
-    title: [HTML & CSS],
-    level: 2,
+    title: [SQL],
+    icon: "sql",
   ),
   entry_skill(
     title: [JavaScript & TypeScript],
-    level: 2,
+    icon: "javascript",
+  ),
+  entry_skill(
+    title: [HTML & CSS],
+    icon: "html",
+  ),
+  entry_skill(
+    title: [LaTeX],
+    icon: "tex",
   ),
   entry_skill(
     title: [Typst],
-    level: 2,
-  ),
-  entry_skill(
-    title: [C],
-    level: 1,
+    icon: "typst",
   ),
 ))

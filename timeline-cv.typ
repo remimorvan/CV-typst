@@ -6,13 +6,12 @@
 
 #let tag(data: (), content) = [
   #box(inset: (left: .48em, bottom: -.18em))[
-    #box(
-      fill: rgb(data.colour.tag),
-      inset: (x: .48em, y: .24em),
-      clip: true,
-      radius: .5em,
-      text(font: data.font.tag, size: .8em, fill: black, weight: "regular")[#content],
-    )
+    #box(fill: rgb(data.colour.tag), inset: (x: .48em, y: .24em), clip: true, radius: .5em, text(
+      font: data.font.tag,
+      size: .8em,
+      fill: black,
+      weight: "regular",
+    )[#content])
   ]
 ]
 
@@ -33,7 +32,7 @@
   set align(eval(data.name.align))
   // Name
   {
-    set text(font: data.font.title)
+    set text(font: data.font.name)
     text(size: eval(data.name.first_name_size), weight: "extrabold")[
       #first_name
     ]
@@ -42,18 +41,26 @@
       #last_name
     ]
     v(1.5em, weak: true)
+  }
+  {
+    set text(font: data.font.job_title)
     if is_non_empty(job_title) {
-      text(size: 1.1em, weight: "bold", fill: rgb(data.colour.side))[
-        #smallcaps(job_title)
+      text(size: eval(data.name.title_size), weight: "bold", fill: rgb(data.colour.side))[
+        #job_title
       ]
     }
-    v(1em)
+    v(-.5em)
   }
   if (is_non_empty(photo)) [
     #set align(center)
     #photo
     #v(1em)
   ]
+  // Presentation
+  if is_non_empty(presentation) {
+    presentation
+    v(1em)
+  }
   // Contact
   for i in range(contact.len()) [
     #if (i > 0) {
@@ -61,7 +68,7 @@
     }
     #let item = contact.at(i)
     #if ("type" in item) [
-      #text(size: 1.2em, fa-icon(item.type, solid: true))
+      #text(size: 1.2em, fa-icon(item.type))
       #h(.5em)
     ]
     #text(font: data.font.tag)[
@@ -72,10 +79,6 @@
       ]
     ]
   ]
-  if is_non_empty(presentation) {
-    v(1em)
-    presentation
-  }
 }
 
 #let section_timeline(
@@ -115,29 +118,44 @@
   ]
 }
 
-#let entry_main(data: (), when: "", where: "", details: "", title: "", description) = [
-  #if is_non_empty(when) [
+#let entry_main(data: (), when: "", where: "", details: "", title: "", description) = {
+  if not is_non_empty(when) or (not is_non_empty(where) and not is_non_empty(details)) [
+    #v(-.2em)
+  ]
+  if is_non_empty(when) [
     _ #when _
     #if (is_non_empty(where) or is_non_empty(details) or is_non_empty(title)) [
       #separator
     ]
   ]
-  #text(weight: "semibold", where)
-  #if is_non_empty(details) [
+  text(weight: "semibold", where)
+  if is_non_empty(details) [
     #text(size: 0.9em)[
       #h(.2em) (#details)
     ]
   ]
-  #if is_non_empty(when) and (is_non_empty(where) or is_non_empty(details)) [
+  if is_non_empty(when) and (is_non_empty(where) or is_non_empty(details)) [
     #linebreak()
   ]
-  #text(
-    font: data.font.title,
-    size: 1.1em,
-    fill: rgb(data.colour.main),
-    weight: "semibold",
-    smallcaps(title),
-  )\
+  text(font: data.font.title, size: 1.1em, fill: rgb(data.colour.main), weight: "semibold", smallcaps(title))
+  linebreak()
+  description
+}
+
+#let entry_paper(data: (), when: "", where: "", with_whom: "", title: "", description) = [
+  #if is_non_empty(when) [
+    _ #when _
+    #if (is_non_empty(title) or is_non_empty(with_whom) or is_non_empty(where)) [
+      #separator
+    ]
+  ]
+  #text(font: data.font.title, size: 1.1em, fill: rgb(data.colour.main), weight: "semibold", smallcaps(
+    where,
+  )) #if is_non_empty(with_whom) { separator + "with " + with_whom }
+  #if is_non_empty(when) and (is_non_empty(title) or is_non_empty(with_whom)) [
+    #linebreak()
+  ]
+  #text(weight: "semibold", title)
   #description
 ]
 
@@ -153,13 +171,7 @@
 }
 
 #let entry_side(data: (), title: "", preposition: "", where: "", when: "", description) = [
-  #text(
-    font: data.font.title,
-    size: 1.1em,
-    fill: rgb(data.colour.side),
-    weight: "semibold",
-    smallcaps(title),
-  )
+  #text(font: data.font.title, size: 1.1em, fill: rgb(data.colour.side), weight: "semibold", smallcaps(title))
   #preposition
   #text(weight: "semibold", where)
   #if is_non_empty(when) [
@@ -174,63 +186,41 @@
 
 #let skill_point(data: (), filled) = {
   box(
-    circle(
-      radius: .35em,
-      stroke: (.15em + rgb(data.colour.side)),
-      fill: if filled { rgb(data.colour.side) },
-    ),
+    circle(radius: .35em, stroke: (.15em + rgb(data.colour.side)), fill: if filled { rgb(data.colour.side) }),
     inset: (x: .2em),
   )
 }
 
-#let entry_skill(data: (), title: "", level: 0, level_max: 3, details: "") = [
-  #for i in range(level_max) {
-    skill_point(data: data, i < level)
+#let entry_skill(data: (), title: "", icon: "", details: "") = {
+  if is_non_empty(icon) {
+    box(text(fill: rgb(data.colour.side), image("icons/" + icon + ".svg", width: 1.2em)), inset: (bottom: -.2em))
   }
-  #h(.8em)
-  #text(weight: "semibold", title)
-  #if is_non_empty(details) [
+  h(.8em)
+  text(weight: "semibold", title)
+  if is_non_empty(details) [
     #text(size: 0.9em)[
       #h(.2em) (#details)
     ]
   ]
-]
+}
 
 
 #let entry_simple(data: (), title: "", content) = [
-  #text(
-    font: data.font.title,
-    size: 1.1em,
-    fill: rgb(data.colour.side),
-    weight: "semibold",
-    smallcaps(title),
-  )
+  #text(font: data.font.title, size: 1.1em, fill: rgb(data.colour.side), weight: "semibold", smallcaps(title))
   #content
 ]
 
 
 #let cv(data: (), above: [], side: [], main: [], doc) = {
-  set page(
-    paper: "a4",
-    margin: (x: eval(data.margin.x), y: eval(data.margin.y)),
-  )
-  set text(
-    font: data.font.main,
-    size: eval(data.font.size),
-  )
+  set page(paper: "a4", margin: (x: eval(data.margin.x), y: eval(data.margin.y)))
+  set text(font: data.font.main, size: eval(data.font.size))
   set par(
     justify: true,
     leading: 0.52em,
   )
   set list(marker: [•])
   set strong(delta: 200)
-  show heading: it => block(
-    width: 100%,
-    text(
-      font: data.font.title,
-      smallcaps(it.body),
-    ),
-  )
+  show heading: it => block(width: 100%, text(font: data.font.title, smallcaps(it.body)))
   grid(
     columns: (3fr, 8fr),
     gutter: eval(data.margin.column_separator),

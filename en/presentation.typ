@@ -12,5 +12,5 @@
     (type: "github", link: "https://github.com/remimorvan", display: "remimorvan"),
     (type: "external-link", link: "https://morvan.xyz", display: "morvan.xyz"),
   ),
-  // presentation: lorem(13),
+  presentation: [_“After four years advancing database theory, I’m ready to apply it to real-world systems.”_],
 )
