@@ -29,7 +29,13 @@
 #let main = [
   #import_sections(
     metadata.language,
-    ("experience", "education", "publications", "softwares", "associations"),
+    (
+      "experience",
+      "education",
+      //"publications",
+      "softwares",
+      "associations",
+    ),
     spread: true,
   )
 ]

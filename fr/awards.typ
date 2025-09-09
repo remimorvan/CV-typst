@@ -2,10 +2,10 @@
 #let metadata = toml("../metadata.toml")
 #let entry_simple = entry_simple.with(data: metadata)
 
-#section_items(
-  title: "Prix",
-  (
-    entry_simple(title: "Prix Turing")[pour avoir un aussi beau nom.],
-    entry_simple(title: "Meilleur dessin")[de *Ma Superbe École Maternelle*. Blablabla.],
-  ),
-)
+#section_items(title: "Prix", (
+  entry_simple(
+    title: fa-icon("trophy") + h(.5em) + "Distinguished Paper Award",
+  )[à PODS '25 pour l'article _Minimization of Conjunctive Regular Path Queries_.],
+  entry_simple(title: fa-icon("trophy") + h(.5em) + "Selected paper")[à ICDT '23
+    pour l'article _Approximation and Semantic Tree-width of Conjunctive Regular Path Queries_.],
+))
