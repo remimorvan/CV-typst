@@ -20,5 +20,9 @@
     - *Master Parisien de Recherche en Informatique* · _Université Paris-Cité_, 2021
     - *Agrégation de Mathématiques* & Master Formation à l'Enseignement Supérieur en Mathématiques · _Université Paris-Saclay_, 2020
   ],
-  // entry_main(when: [Sept. 2015 – Aug. 2017], where: [Lycée Saint-Louis], title: [Undergraduate studies "prépa"])[],
+  entry_main(
+    when: [sept. 2015 – août 2017],
+    where: [Lycée Saint-Louis],
+    title: [Classes préparatoires aux grandes écoles MPSI & MP\*],
+  )[],
 ))

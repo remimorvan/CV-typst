@@ -90,7 +90,7 @@
     #circle(radius: .9em, stroke: .15em, fill: black)
   ]
   if is_non_empty(icon) {
-    place(start + top, dx: .45em, dy: .45em)[
+    place(start, dx: .45em, dy: .45em)[
       #box(height: .9em, width: .9em)[
         #align(center + horizon, text(fill: white, fa-icon(icon)))
       ]
@@ -149,9 +149,15 @@
       #separator
     ]
   ]
-  #text(font: data.font.title, size: 1.1em, fill: rgb(data.colour.main), weight: "semibold", smallcaps(
-    where,
-  )) #if is_non_empty(with_whom) { separator + "with " + with_whom }
+  #text(
+    font: data.font.title,
+    size: 1.1em,
+    fill: rgb(data.colour.main),
+    weight: "semibold",
+    smallcaps(
+      where,
+    ),
+  ) #if is_non_empty(with_whom) { separator + "with " + with_whom }
   #if is_non_empty(when) and (is_non_empty(title) or is_non_empty(with_whom)) [
     #linebreak()
   ]
