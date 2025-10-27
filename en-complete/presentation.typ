@@ -12,5 +12,5 @@
     (type: "github", link: "https://github.com/remimorvan", display: "remimorvan"),
     (type: "external-link", link: "https://morvan.xyz", display: "morvan.xyz"),
   ),
-  presentation: [],
+  presentation: [_After four years advancing database theory, I want to apply it to real-world systems. My short-term goal is to deepen my practical skills and industry knowledge of large-scale data systems, in order to build a research project deeply rooted in practical needs._],
 )

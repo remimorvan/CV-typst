@@ -1,4 +1,5 @@
 #import "@preview/fontawesome:0.5.0": *
+#import "@preview/wrap-it:0.1.1": wrap-content
 
 #let is_non_empty(content) = {
   content != "" and content != []
@@ -58,7 +59,9 @@
   ]
   // Presentation
   if is_non_empty(presentation) {
+    box(text(size: 2em, fill: rgb(data.colour.side), "“ "), height: .5em, width: 1em)
     presentation
+    box(text(size: 2em, fill: rgb(data.colour.side), " ”"), height: .5em, width: 1em)
     v(1em)
   }
   // Contact

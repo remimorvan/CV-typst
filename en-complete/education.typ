@@ -47,7 +47,8 @@
   entry_fullwidth(
     when: [Sept. 2021 – Aug. 2025],
     where: [Université de Bordeaux],
-    title: [Ph.D. in Computer Science#h(.5em)#link("https://www.morvan.xyz/phd.html")[#fa-icon("book")]],
+    links: { link("https://www.morvan.xyz/phd.html", fa-icon("book")) + h(.5em) },
+    title: [Ph.D. in Computer Science],
   )[
     Title: *_"Homomorphism Problems in Graph Databases and Automatic Structures"_*.
     Supervised by Diego Figueira and Nathanaël Fijalkow (LaBRI, CNRS).\

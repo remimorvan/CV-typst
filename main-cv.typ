@@ -19,13 +19,21 @@
   }
 }
 
-#let side = [
-  #import_sections(
-    metadata.language,
-    ("presentation", "awards", "skills", "languages", "soft"),
-    spread: false,
-  )
-]
+#let side = {
+  if metadata.language in ("fr", "en") {
+    import_sections(
+      metadata.language,
+      ("presentation", "awards", "skills", "languages", "soft"),
+      spread: false,
+    )
+  } else {
+    import_sections(
+      metadata.language,
+      ("presentation", "awards"),
+      spread: false,
+    )
+  }
+}
 #let main = {
   if metadata.language in ("fr", "en") {
     import_sections(
@@ -51,6 +59,7 @@
         "softwares",
         "associations",
         "service",
+        "policy",
         "publications",
         "talks",
       ),
