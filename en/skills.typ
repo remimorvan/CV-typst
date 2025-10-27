@@ -8,12 +8,16 @@
     icon: "python",
   ),
   entry_skill(
+    title: [OCaml],
+    icon: "ocaml",
+  ),
+  entry_skill(
     title: [C],
     icon: "clang",
   ),
   entry_skill(
-    title: [OCaml],
-    icon: "ocaml",
+    title: [Perl],
+    icon: "perl",
   ),
   entry_skill(
     title: [SQL],
@@ -24,7 +28,7 @@
     icon: "javascript",
   ),
   entry_skill(
-    title: [HTML, CSS & Sass],
+    title: [HTML & CSS],
     icon: "html",
   ),
   entry_skill(

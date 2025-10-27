@@ -5,8 +5,12 @@
 
 #section_timeline(
   icon: "suitcase",
-  title: "Professional Research Experience",
+  title: "Research & Engineering Experience",
   content: (
+    entry_main(when: [since Oct. 2025], where: [Freelance], title: [Software Engineer])[
+      - Commisionned by the CNRS to develop _LaTeXML_ #link("https://github.com/brucemiller/LaTeXML", fa-icon("github")).
+        #tag("Perl") #tag("TeX") #tag("XML")
+    ],
     entry_main(when: [Sept. 2021 – Aug. 2025], where: [LaBRI, Université de Bordeaux], title: [Ph.D. Researcher])[
       - Research projects in *database theory* (graph database query optimization) and *automata theory* (model-checking of infinite structures). 6 publications and 24 seminars. #tag("query optimization")
       - *Main organiser* and founder of a *three-day workshop* _ATLAS '24_ #link("https://atlas24.labri.fr/", fa-icon("link")). Member of the organising committee of several conferences. #tag("event organization")
@@ -17,7 +21,7 @@
 
 #section_timeline(
   icon: "chalkboard",
-  title: "Teaching Experience & Student Supervision",
+  title: "Teaching Experience",
   content: (
     entry_main(
       when: [June – July 2024],
@@ -135,15 +139,15 @@
       details: [Santiago, Chile],
       title: [Research visit],
     )[One-month visit, hosted by Pablo Barceló and Miguel Romero (Universidad Adolfo Ibáñez).],
-    entry_main(
-      when: [July 2022],
-      where: [EDBT-INTENDED summer school],
-      details: [Bordeaux, France],
-      title: [#link(
-        "https://edbtschool22.labri.fr/index.html",
-        "Summer School on Data and Knowledge",
-      )],
-    )[],
+    // entry_main(
+    //   when: [July 2022],
+    //   where: [EDBT-INTENDED summer school],
+    //   details: [Bordeaux, France],
+    //   title: [#link(
+    //     "https://edbtschool22.labri.fr/index.html",
+    //     "Summer School on Data and Knowledge",
+    //   )],
+    // )[],
     entry_main(
       when: [Feb. 2022],
       where: [Dagstuhl seminar],

@@ -32,9 +32,10 @@
     (
       "experience",
       "education",
-      //"publications",
       "softwares",
       "associations",
+      "publications",
+      "talks",
     ),
     spread: true,
   )

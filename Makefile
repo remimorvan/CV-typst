@@ -1,4 +1,4 @@
-common_dependencies = main-cv.typ metadata.toml
+common_dependencies = main-cv.typ timeline-cv.typ metadata.toml
 
 .PHONY: clean
 

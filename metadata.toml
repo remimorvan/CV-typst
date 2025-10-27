@@ -18,5 +18,5 @@ language = "en"
 	size = "9pt"
 [margin]
 	x = "1.25cm"
-	y = "1.5cm"
+	y = "1.25cm"
 	column_separator = "1.25cm"

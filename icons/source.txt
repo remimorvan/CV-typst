@@ -1,1 +1,4 @@
+https://tabler.io/icons
 https://github.com/tabler/tabler-icons/releases/tag/v3.35.0
+--
+otherwise https://www.svgrepo.com
