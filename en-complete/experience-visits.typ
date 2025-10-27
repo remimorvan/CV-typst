@@ -73,7 +73,7 @@
       where: [Pontificia Universidad Católica de Chile],
       details: [Santiago, Chile],
       title: [Research visit],
-    )[One-month visit, hosted by Pablo Barceló and Miguel Romero (Universidad Adolfo Ibáñez).],
+    )[One-month visit, hosted by Pablo Barceló and Miguel Romero.],
     // entry_main(
     //   when: [July 2022],
     //   where: [EDBT-INTENDED summer school],

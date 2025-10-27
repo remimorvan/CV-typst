@@ -1,10 +1,8 @@
 #import "../timeline-cv.typ": *
 #let metadata = toml("../metadata.toml")
 #let entry_fullwidth = entry_fullwidth.with(data: metadata)
+#let entry_subsection = entry_subsection.with(data: metadata)
 #let tag = tag.with(data: metadata)
-
-#let publis = json("./papers.json")
-#let publis_entries = ()
 
 #let get_where(publi) = {
   return if "journalLink" in publi { link(publi.journalLink, publi.journal) } else { publi.journal }
@@ -36,15 +34,40 @@
   return text(size: 0.9em, links)
 }
 
-#for publi in publis {
-  publis_entries.push(entry_fullwidth(
-    when: str(publi.year),
-    where: get_where(publi),
-    details: get_coauthors(publi),
-    links: get_links(publi),
-    title: publi.title,
-    discreet: true,
-  )[])
+#let get_publis_type(type: "") = {
+  let publis_entries = ()
+  let publis = json("./papers.json")
+  if type != "all" {
+    publis = publis.filter(publi => "type" in publi and publi.type == type)
+  }
+  for publi in publis {
+    publis_entries.push(entry_fullwidth(
+      when: str(publi.year),
+      where: get_where(publi),
+      details: get_coauthors(publi),
+      links: get_links(publi),
+      title: publi.title,
+      discreet: true,
+    )[])
+  }
+  return publis_entries
 }
 
-#section_timeline(icon: "newspaper", title: "Publications", content: publis_entries)
+#let get_all_publis() = {
+  let publis = ()
+  for (type, type_title) in (
+    ("inpreparation", "In preparation"),
+    ("journal", "Journal"),
+    ("conf", "Conferences"),
+    ("thesis", "Thesis"),
+  ) {
+    publis += (entry_subsection(title: type_title)[],) + get_publis_type(type: type)
+  }
+  return publis
+}
+
+#section_timeline(
+  icon: "newspaper",
+  title: "Publications",
+  content: get_all_publis(),
+)

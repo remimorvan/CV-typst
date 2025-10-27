@@ -153,7 +153,7 @@
     move(dx: (-50% - eval(data.margin.column_separator) + 1.25em), box(width: 50%, height: 0pt, {
       set align(right)
       if is_non_empty(when) or is_non_empty(links) [
-        #text(fill: rgb(data.colour.main), links) _ #when _
+        #text(fill: rgb(data.colour.side), links) _ #when _
         #if (is_non_empty(details)) [
           #linebreak()
           #text(size: 0.8em, details)
@@ -226,6 +226,14 @@
   #text(font: data.font.title, size: 1.1em, fill: rgb(data.colour.side), weight: "semibold", smallcaps(title))
   #content
 ]
+
+#let entry_subsection(data: (), title: "", content) = {
+  move(dx: (-50% - eval(data.margin.column_separator) + 1.25em), box(width: 50%, {
+    set align(right)
+    text(font: data.font.title, size: 1.1em, weight: "semibold", smallcaps(title))
+    content
+  }))
+}
 
 
 #let cv(data: (), above: [], side: [], main: [], doc) = {

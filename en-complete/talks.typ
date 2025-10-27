@@ -12,7 +12,7 @@
 
 #let get_links(talk) = {
   return if "slides" in talk {
-    link("https://morvan.xyz/" + talk.slides, text(fill: rgb(metadata.colour.main), fa-icon("file-import"))) + h(.5em)
+    link("https://morvan.xyz/" + talk.slides, fa-icon("file-import")) + h(.5em)
   } else { "" }
 }
 

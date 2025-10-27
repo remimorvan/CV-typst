@@ -5,6 +5,39 @@
 			"Diego Figueira",
 			"Miguel Romero"
 		],
+		"journal": "In preparation; invited for publication at TheoretiCS",
+		"year": 2026,
+		"type": "inpreparation"
+	},
+	{
+		"title": "A Dichotomy Theorem for Automatic Structures",
+		"coauthors": [
+			"Antoine Cuvelier"
+		],
+		"year": 2026,
+		"journal": "In preparation",
+		"type": "inpreparation"
+	},
+	{
+		"title": "Relative Membership of Regular Languages",
+		"year": 2026,
+		"journal": "In preparation; journal version of CSL '25 article",
+		"type": "inpreparation"
+	},
+	{
+		"title": "Homomorphism Problems in Graph Databases and Automatic Structures",
+		"journal": "Ph.D. thesis",
+		"year": 2025,
+		"doi": "https://theses.hal.science/tel-05316424",
+		"arxiv": "https://arxiv.org/abs/2510.07422",
+		"type": "thesis"
+	},
+	{
+		"title": "Minimizing Conjunctive Regular Path Queries",
+		"coauthors": [
+			"Diego Figueira",
+			"Miguel Romero"
+		],
 		"journal": "PODS '25",
 		"year": 2025,
 		"arxiv": "https://arxiv.org/abs/2504.00612",
@@ -89,7 +122,7 @@
 		"year": 2021,
 		"doi": "https://doi.org/10.13140/RG.2.2.22251.87847/1",
 		"pdf": "papers/m2-internship-report.pdf",
-		"type": "misc"
+		"type": "thesis"
 	},
 	{
 		"title": "A deterministic behaviour for realistic price dynamics",
