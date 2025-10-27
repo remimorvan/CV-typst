@@ -86,36 +86,39 @@
   title: "Section Name",
   content: (),
 ) = {
-  place()[
-    #circle(radius: .9em, stroke: .15em, fill: black)
-  ]
-  if is_non_empty(icon) {
-    place(start, dx: .45em, dy: .45em)[
-      #box(height: .9em, width: .9em)[
-        #align(center + horizon, text(fill: white, fa-icon(icon)))
+  block({
+    box(inset: (bottom: -1em), {
+      place()[
+        #circle(radius: .9em, stroke: .15em, fill: black)
       ]
-    ]
-  }
-
-  box(inset: (left: 1.8em + 1.25em, top: .35em))[
-    #heading(numbering: none, depth: 1, title)
-  ]
-  box(
-    stroke: (left: .15em, rest: none),
-    inset: (left: .9em + 1.25em, top: 1em, bottom: .75em),
-    outset: (left: -.9em, top: .05em, right: 1.4em, rest: 0em),
-  )[
-    #list(
-      marker: [
-        #place(dx: -.35em - 1.25em)[
-          #circle(radius: .35em, fill: white, stroke: .15em)
+      if is_non_empty(icon) {
+        place(start, dx: .45em, dy: .45em)[
+          #box(height: .9em, width: .9em)[
+            #align(center + horizon, text(fill: white, fa-icon(icon)))
+          ]
         ]
-      ],
-      body-indent: 0pt,
-      spacing: 1.5em,
-      ..content,
-    )
-  ]
+      }
+      box(inset: (left: 1.8em + 1.25em, top: .35em))[
+        #heading(numbering: none, depth: 1, title)
+      ]
+    })
+    block(
+      stroke: (left: .15em, rest: none),
+      inset: (left: .9em + 1.25em, top: 1.25em, bottom: .75em),
+      outset: (left: -.9em, top: .05em, right: 1.4em, rest: 0em),
+    )[
+      #list(
+        marker: [
+          #place(dx: -.35em - 1.25em)[
+            #circle(radius: .35em, fill: white, stroke: .15em)
+          ]
+        ],
+        body-indent: 0pt,
+        spacing: 1.5em,
+        ..content,
+      )
+    ]
+  })
 }
 
 #let entry_main(data: (), when: "", where: "", details: "", title: "", description) = {
