@@ -84,96 +84,120 @@
   ]
 }
 
+#let _display_title_of_section_timeline(icon, title) = {
+  box(inset: (bottom: -1em), {
+    place()[
+      #circle(radius: .9em, stroke: .15em, fill: black)
+    ]
+    if is_non_empty(icon) {
+      place(start, dx: .45em, dy: .45em)[
+        #box(height: .9em, width: .9em)[
+          #align(center + horizon, text(fill: white, fa-icon(icon)))
+        ]
+      ]
+    }
+    box(inset: (left: 1.8em + 1.25em, top: .35em))[
+      #heading(numbering: none, depth: 1, title)
+    ]
+  })
+}
+
+#let _display_item_of_section_timeline(item) = {
+  let marker = if item.type == "item" {
+    place(dx: -.35em - 1.25em, {
+      circle(radius: .35em, fill: white, stroke: .15em)
+    })
+  } else {
+    place(dx: -.35em - 1.25em, dy: .5em, {
+      circle(radius: .35em, fill: black, stroke: .15em)
+    })
+  }
+  block(inset: (bottom: -1.5em), block(
+    stroke: (left: .15em, rest: none),
+    inset: (left: .9em + 1.25em, top: 1.25em, bottom: .75em),
+    outset: (left: -.9em, top: .05em, right: 1.4em, rest: 0em),
+  )[#list(
+    marker: marker,
+    body-indent: 0pt,
+    spacing: 1.5em,
+    item.content,
+  )])
+}
+
 #let section_timeline(
   icon: "",
   title: "Section Name",
   content: (),
 ) = {
-  block({
-    box(inset: (bottom: -1em), {
-      place()[
-        #circle(radius: .9em, stroke: .15em, fill: black)
-      ]
-      if is_non_empty(icon) {
-        place(start, dx: .45em, dy: .45em)[
-          #box(height: .9em, width: .9em)[
-            #align(center + horizon, text(fill: white, fa-icon(icon)))
-          ]
-        ]
-      }
-      box(inset: (left: 1.8em + 1.25em, top: .35em))[
-        #heading(numbering: none, depth: 1, title)
-      ]
-    })
-    block(
-      stroke: (left: .15em, rest: none),
-      inset: (left: .9em + 1.25em, top: 1.25em, bottom: .75em),
-      outset: (left: -.9em, top: .05em, right: 1.4em, rest: 0em),
-    )[
-      #list(
-        marker: [
-          #place(dx: -.35em - 1.25em)[
-            #circle(radius: .35em, fill: white, stroke: .15em)
-          ]
-        ],
-        body-indent: 0pt,
-        spacing: 1.5em,
-        ..content,
-      )
-    ]
+  block(inset: (top: .5em, bottom: 1.5em), {
+    if content.len() >= 1 {
+      // Make title and first item non-breakable
+      box({
+        _display_title_of_section_timeline(icon, title)
+        _display_item_of_section_timeline(content.at(0))
+      })
+      // Display rest of contents
+      for item in content.slice(1) { _display_item_of_section_timeline(item) }
+    }
   })
 }
 
 #let entry_main(data: (), when: "", where: "", details: "", title: "", description) = {
-  if not is_non_empty(when) or (not is_non_empty(where) and not is_non_empty(details)) [
-    #v(-.2em)
-  ]
-  if is_non_empty(when) [
-    _ #when _
-    #if (is_non_empty(where) or is_non_empty(details) or is_non_empty(title)) [
-      #separator
+  let content = {
+    if not is_non_empty(when) or (not is_non_empty(where) and not is_non_empty(details)) [
+      #v(-.2em)
     ]
-  ]
-  text(weight: "semibold", where)
-  if is_non_empty(details) [
-    #text(size: 0.9em)[
-      #h(.2em) (#details)
+    if is_non_empty(when) [
+      _ #when _
+      #if (is_non_empty(where) or is_non_empty(details) or is_non_empty(title)) [
+        #separator
+      ]
     ]
-  ]
-  if is_non_empty(when) and (is_non_empty(where) or is_non_empty(details)) [
-    #linebreak()
-  ]
-  text(font: data.font.title, size: 1.1em, fill: rgb(data.colour.main), weight: "semibold", smallcaps(title))
-  linebreak()
-  description
+    text(weight: "semibold", where)
+    if is_non_empty(details) [
+      #text(size: 0.9em)[
+        #h(.2em) (#details)
+      ]
+    ]
+    if is_non_empty(when) and (is_non_empty(where) or is_non_empty(details)) [
+      #linebreak()
+    ]
+    text(font: data.font.title, size: 1.1em, fill: rgb(data.colour.main), weight: "semibold", smallcaps(title))
+    linebreak()
+    description
+  }
+  return (type: "item", content: content)
 }
 
 #let entry_fullwidth(data: (), when: "", where: "", details: "", links: "", title: "", discreet: false, description) = {
-  box({
-    move(dx: (-50% - eval(data.margin.column_separator) + 1.25em), box(width: 50%, height: 0pt, {
-      set align(right)
-      if is_non_empty(when) or is_non_empty(links) [
-        #text(fill: rgb(data.colour.side), links) _ #when _
-        #if (is_non_empty(details)) [
-          #linebreak()
-          #text(size: 0.8em, details)
+  let content = {
+    box({
+      move(dx: (-70% - eval(data.margin.column_separator) + 1.25em), box(width: 70%, height: 0pt, {
+        set align(right)
+        if is_non_empty(when) or is_non_empty(links) [
+          #text(fill: rgb(data.colour.side), links) _ #when _
+          #if (is_non_empty(details)) [
+            #linebreak()
+            #text(size: 0.8em, details)
+          ]
         ]
-      ]
-    }))
-    box(inset: (top: -1.4em), {
-      if is_non_empty(where) {
-        box(inset: (top: 0.2em), text(weight: "semibold", where))
+      }))
+      box(inset: (top: -1.4em), {
+        if is_non_empty(where) {
+          box(inset: (top: 0.2em), text(weight: "semibold", where))
+          linebreak()
+        }
+        if discreet {
+          text(font: data.font.title, size: 0.9em, fill: rgb(data.colour.main), weight: "semibold", title)
+        } else {
+          text(font: data.font.title, size: 1.1em, fill: rgb(data.colour.main), weight: "semibold", smallcaps(title))
+        }
         linebreak()
-      }
-      if discreet {
-        text(font: data.font.title, size: 0.9em, fill: rgb(data.colour.main), weight: "semibold", title)
-      } else {
-        text(font: data.font.title, size: 1.1em, fill: rgb(data.colour.main), weight: "semibold", smallcaps(title))
-      }
-      linebreak()
-      description
+        description
+      })
     })
-  })
+  }
+  return (type: "item", content: content)
 }
 
 #let section_items(data: (), title: "", content, content_separator: v(-.1em)) = {
@@ -227,12 +251,19 @@
   #content
 ]
 
+#let entry_par(data: (), content) = {
+  return (type: "item", content: content)
+}
+
 #let entry_subsection(data: (), title: "", content) = {
-  move(dx: (-50% - eval(data.margin.column_separator) + 1.25em), box(width: 50%, {
-    set align(right)
-    text(font: data.font.title, size: 1.1em, weight: "semibold", smallcaps(title))
-    content
-  }))
+  let content = {
+    move(dx: (-50% - eval(data.margin.column_separator) + 1.25em), box(width: 50%, inset: (top: .5em, bottom: .5em), {
+      set align(right)
+      text(font: data.font.title, size: 1.1em, weight: "semibold", smallcaps(title))
+      content
+    }))
+  }
+  return (type: "subsection", content: content)
 }
 
 
