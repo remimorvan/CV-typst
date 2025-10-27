@@ -5,20 +5,23 @@
 
 #let talks = json("./talks.json")
 #let talks_entries = ()
+
 #let get_details(talk) = {
-  let details = talk.where + separator + talk.duration
-  if "slides" in talk {
-    details += (
-      h(.5em) + link("https://morvan.xyz/" + talk.slides, text(fill: rgb(metadata.colour.main), fa-icon("file-import")))
-    )
-  }
-  return details
+  return talk.where + separator + talk.duration
 }
+
+#let get_links(talk) = {
+  return if "slides" in talk {
+    link("https://morvan.xyz/" + talk.slides, text(fill: rgb(metadata.colour.main), fa-icon("file-import"))) + h(.5em)
+  } else { "" }
+}
+
 #for talk in talks {
   talks_entries.push(entry_fullwidth(
     when: talk.date,
     where: talk.event,
     details: get_details(talk),
+    links: get_links(talk),
     title: talk.title,
     discreet: true,
   )[])

@@ -26,20 +26,38 @@
     spread: false,
   )
 ]
-#let main = [
-  #import_sections(
-    metadata.language,
-    (
-      "experience",
-      "education",
-      "softwares",
-      "associations",
-      "publications",
-      "talks",
-    ),
-    spread: true,
-  )
-]
+#let main = {
+  if metadata.language in ("fr", "en") {
+    import_sections(
+      metadata.language,
+      (
+        "experience",
+        "education",
+        "softwares",
+        "associations",
+        "publications",
+        "talks",
+      ),
+      spread: true,
+    )
+  } else {
+    import_sections(
+      metadata.language,
+      (
+        "experience",
+        "experience-teaching",
+        "experience-visits",
+        "education",
+        "softwares",
+        "associations",
+        "service",
+        "publications",
+        "talks",
+      ),
+      spread: true,
+    )
+  }
+}
 #show: cv.with(
   data: metadata,
   side: side,

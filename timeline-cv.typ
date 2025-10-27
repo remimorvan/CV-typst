@@ -145,52 +145,33 @@
   description
 }
 
-#let entry_fullwidth(data: (), when: "", where: "", details: "", title: "", discreet: false, description) = {
-  move(dx: (-50% - eval(data.margin.column_separator) + 1.25em), box(width: 50%, {
-    set align(right)
-    if is_non_empty(when) [
-      _ #when _
-      #if (is_non_empty(details)) [
-        #linebreak()
-        #text(details)
+#let entry_fullwidth(data: (), when: "", where: "", details: "", links: "", title: "", discreet: false, description) = {
+  box({
+    move(dx: (-50% - eval(data.margin.column_separator) + 1.25em), box(width: 50%, height: 0pt, {
+      set align(right)
+      if is_non_empty(when) or is_non_empty(links) [
+        #text(fill: rgb(data.colour.main), links) _ #when _
+        #if (is_non_empty(details)) [
+          #linebreak()
+          #text(size: 0.8em, details)
+        ]
       ]
-    ]
-  }))
-  v(-1.9em)
-  if (is_non_empty(details)) { v(-1.2em) }
-  text(weight: "semibold", where)
-  linebreak()
-  if discreet {
-    text(font: data.font.title, size: 0.9em, fill: rgb(data.colour.main), weight: "semibold", title)
-  } else {
-    text(font: data.font.title, size: 1.1em, fill: rgb(data.colour.main), weight: "semibold", smallcaps(title))
-  }
-  linebreak()
-  description
+    }))
+    box(inset: (top: -1.4em), {
+      if is_non_empty(where) {
+        box(inset: (top: 0.2em), text(weight: "semibold", where))
+        linebreak()
+      }
+      if discreet {
+        text(font: data.font.title, size: 0.9em, fill: rgb(data.colour.main), weight: "semibold", title)
+      } else {
+        text(font: data.font.title, size: 1.1em, fill: rgb(data.colour.main), weight: "semibold", smallcaps(title))
+      }
+      linebreak()
+      description
+    })
+  })
 }
-
-#let entry_paper(data: (), when: "", where: "", with_whom: "", title: "", description) = [
-  #if is_non_empty(when) [
-    _ #when _
-    #if (is_non_empty(title) or is_non_empty(with_whom) or is_non_empty(where)) [
-      #separator
-    ]
-  ]
-  #text(
-    font: data.font.title,
-    size: 1.1em,
-    fill: rgb(data.colour.main),
-    weight: "semibold",
-    smallcaps(
-      where,
-    ),
-  ) #if is_non_empty(with_whom) { separator + "with " + with_whom }
-  #if is_non_empty(when) and (is_non_empty(title) or is_non_empty(with_whom)) [
-    #linebreak()
-  ]
-  #text(weight: "semibold", title)
-  #description
-]
 
 #let section_items(data: (), title: "", content, content_separator: v(-.1em)) = {
   heading(numbering: none, depth: 1, title)
