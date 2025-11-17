@@ -8,6 +8,12 @@
   title: "Teaching Experience",
   content: (
     entry_main(
+      when: [Dec. 2025 – Feb. 2026],
+      where: [Lycée Montaigne],
+      details: [Bordeaux],
+      title: [Oral Examiner in “prépa” in Computer Science (14h) #tag("C") #tag("OCaml")],
+    )[],
+    entry_main(
       when: [June – July 2024],
       where: [Bachelor 3 intern from ENS Ulm],
       details: [France],
@@ -19,10 +25,10 @@
       details: [Bordeaux, France],
       title: [Teaching assistant],
     )[
-      - Functional Programming Project in TypeScript — Bachelor 3, 2024–25, 20h
-      - Database Management Systems — Master 1, 2024–25, 20h
+      - Functional Programming Project — Bachelor 3, 2024–25, 25h #tag("TypeScript")
+      - Imperative Programming — Bachelor 3, 2024–25, 20h #tag("C")
+      - Database Management Systems — Master 1, 2024–25, 20h #tag("PostgreSQL")
       - Database Management Systems — Master 1, 2023–24, 20h
-      - Internship defences — Bachelor 3, 2023–24, 2h
     ],
     entry_main(
       when: [May – July 2023],
@@ -36,18 +42,18 @@
       details: [Bordeaux, France],
       title: [Teaching assistant],
     )[
-      - *Machine Learning & Deep Learning — Master 1 (AI track), 2023–24. 9h lecture + 9h exercise session + creation of Jupyter notebooks. New course.*
-      - Programming Project (in C) — Bachelor 2, 2022–23, 32h
+      - *Machine Learning & Deep Learning — Master 1 (AI track), 2023–24. 9h lecture + 9h exercise session. Creation of the course.* #tag("scikit-learn")
+      - Programming Project — Bachelor 2, 2022–23, 32h #tag("C")
       - Automata Theory — Bachelor 3, 2022–23, 32h
       - Computability and Complexity — Master 1, 2021–22, 28h
-      - Proofs & Logics — Bachelor 3, 2021–22, 24h
+      - Proofs & Logics — Bachelor 3, 2021–22, 24h #tag("Rocq")
       - Digital Literacy — Bachelor 1, 2021–22, 13h
     ],
     entry_main(
       when: [Sep. 2020 – June 2021],
       where: [Lycée Saint-Louis],
       details: [Paris],
-      title: [Oral Examiner in Mathematics (59h)],
+      title: [Oral Examiner in “prépa” in Mathematics (59h)],
     )[],
   ),
 )

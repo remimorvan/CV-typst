@@ -11,7 +11,7 @@
       when: [2026 – 2027],
       where: [ICDT 2027],
       title: [Member of the program committee],
-    )[Main conference in database theory in Europe (CORE rank A).],
+    )[Main conference of database theory in Europe (CORE rank A).],
     // entry_main(
     //   when: [May 2025],
     //   where: [#link("https://fmt25.labri.fr/", "FMT 2025")],
