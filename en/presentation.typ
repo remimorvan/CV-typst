@@ -5,12 +5,12 @@
 #section_presentation(
   "Rémi",
   "Morvan",
-  "Database Researcher",
+  "",
   photo: image("../remi.png", width: 90%),
   contact: (
     (type: "envelope", link: "mailto:remi@morvan.xyz", display: "remi@morvan.xyz"),
     (type: "github", link: "https://github.com/remimorvan", display: "remimorvan"),
     (type: "external-link", link: "https://morvan.xyz", display: "morvan.xyz"),
   ),
-  presentation: [_“After four years advancing database theory, I want to apply it to real-world systems.”_],
+  // presentation: [_“”_],
 )
